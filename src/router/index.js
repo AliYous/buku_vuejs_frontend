@@ -19,7 +19,7 @@ Vue.use(VueRouter)
       meta: {
           guest: true
       }
-    }
+    },
     // {
     //     path: '/register',
     //     name: 'register',
@@ -36,6 +36,8 @@ Vue.use(VueRouter)
     //         requiresAuth: true
     //     }
     // },
+    { path: '*', redirect: '/' } //If any other route, redirect to '/'
+
   ]
 
 const router = new VueRouter({
