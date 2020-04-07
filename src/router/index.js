@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Books from '../views/Books.vue'
+import Authentication from '../views/Authentication'
 // import SignIn from '../views/SignIn.vue'
 
 
@@ -12,14 +13,14 @@ Vue.use(VueRouter)
     name: 'Home',
     component: Books
   },
-  // {
-  //   path: '/login',
-  //   name: 'login',
-  //   component: Login,
-  //   meta: {
-  //       guest: true
-  //   }
-  // },
+  {
+    path: '/authentication',
+    name: 'authentication',
+    component: Authentication,
+    meta: {
+        guest: true
+    }
+  }
   // {
   //     path: '/register',
   //     name: 'register',
