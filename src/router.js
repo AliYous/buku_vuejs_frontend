@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Books from '../views/Books.vue'
-import Authentication from '../views/Authentication.vue'
+import Dashboard from './views/Dashboard.vue'
+import SignIn from './views/SignIn.vue'
+import SignUp from './views/SignUp.vue'
 
 
 Vue.use(VueRouter)
@@ -9,25 +10,25 @@ Vue.use(VueRouter)
   const routes = [
     {
       path: '/',
-      name: 'Home',
-      component: Books
+      name: 'Dashboard',
+      component: Dashboard
     },
     {
-      path: '/authentication',
-      name: 'Authentication',
-      component: Authentication,
+      path: '/signin',
+      name: 'SignIn',
+      component: SignIn,
       meta: {
           guest: true
       }
     },
-    // {
-    //     path: '/register',
-    //     name: 'register',
-    //     component: Register,
-    //     meta: {
-    //         guest: true
-    //     }
-    // },
+    {
+      path: '/signup',
+      name: 'SignUp',
+      component: SignUp,
+      meta: {
+          guest: true
+      }
+    },
     // {
     //     path: '/dashboard',
     //     name: 'userboard',

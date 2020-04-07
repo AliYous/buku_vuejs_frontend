@@ -7,6 +7,7 @@
 <script>
 import BookList from '../components/books/BookList'
 export default {
+    name: 'Dashboard',
     components: {
         BookList
     }
