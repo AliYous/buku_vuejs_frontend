@@ -1,5 +1,4 @@
 import axios from 'axios'
-// const API_URL = 'http://localhost:3000'
 
 export default {
 	namespaced: true,
@@ -20,13 +19,7 @@ export default {
 		},
 
 		async attempt({ commit }, token) {
-			commit('SET_TOKEN', token)
-
-			// try {
-			// 	// check if token is valid and if it is, set the state 'user' to the current_user
-			// } catch(e) {
-			// 	console.log('failed')
-			// }
+			commit('SET_TOKEN', token) //We set the token
 		}
 	},
 
@@ -40,7 +33,4 @@ export default {
 		// }
 	}
 }
-
-
-// 12:56 vidéo 
 

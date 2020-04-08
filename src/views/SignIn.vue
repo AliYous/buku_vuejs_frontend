@@ -47,7 +47,7 @@ export default {
         }),
         
         onSubmit() {
-            
+            this.signIn(this.form)
         }
     }
 
