@@ -15,9 +15,8 @@ export default {
 	actions: {
 		async signIn({ dispatch }, credentials) {
 			let response = await axios.post('signin', credentials)
-			dispatch('attempt', response.data.token)
+			dispatch('attempt', response.data.csrf) // csrf = token 
 		},
-
 		async attempt({ commit }, token) {
 			commit('SET_TOKEN', token) //We set the token
 		}
