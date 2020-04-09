@@ -37,8 +37,7 @@ export default {
         getAllBooks() {
             this.fetchBooks()
         }
-    }
-
+    } 
 }
 </script>
 
