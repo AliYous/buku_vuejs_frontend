@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import TheHeader from './components/layout/TheHeader'
+import TheHeader from './components/TheHeader'
 export default {
   name: 'App',
   components: {
@@ -16,7 +16,12 @@ export default {
 }
 </script>
 
+
 <style>
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Gotu');
+
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -24,8 +29,9 @@ export default {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Gotu', 'Roboto Condensed' ,Helvetica, sans-serif;
   line-height: 1.4;
+  background: '#FAFAFA';
 }
 
 .btn {
