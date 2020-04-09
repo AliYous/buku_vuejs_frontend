@@ -16,7 +16,6 @@ const getters = {
 const actions = {
 	async fetchBooks({ commit }) {
         const response = await axios.get('api/v1/books');
-        console.log(response.data)
 		commit("setBooks" , response.data) 
 	},
 

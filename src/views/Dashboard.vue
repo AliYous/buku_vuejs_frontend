@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container-fluid"> 
-                <BookList v-bind:status="statusList[0]"/>
+                <BookList v-bind:status="statusList[0]" v-bind:books="bookList"/>
                 <BookList v-bind:status="statusList[1]"/>
                 <BookList v-bind:status="statusList[2]"/>
         </div>
@@ -21,8 +21,8 @@ export default {
     data() {
         return {
         statusList: ["In Progress", "To Read", "Read"],
-        bookList: []
-        // readBooks: filterReadBooks()
+        bookList: {},
+        readBooks: {},
         }
     },
     created() {
