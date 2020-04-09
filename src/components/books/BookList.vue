@@ -1,13 +1,20 @@
 <template>
       <div class="flex-rectangle">
+
+        <div class="book-status">
+          <h1>To read</h1>
+        </div>
+
         <div class="book-list">
-          <div class="book-item">
-              <BookListItem />
-          </div>
-        
-          <div class="book-item">
-              <BookListItem />
-          </div>
+          <div class="book-list">
+            <div class="book-item">
+                <BookListItem />
+            </div>
+          
+            <div class="book-item">
+                <BookListItem />
+            </div>
+        </div>
         </div>          
       </div>
 </template>
@@ -43,6 +50,16 @@ export default {
 
 .book-item {
   margin-top: 1rem;
+}
+
+.book-status {
+  margin-top: 2em;
+  position:absolute;
+  text-align:center;
+}
+
+.book-list {
+  margin-top: 3em;
 }
 
 
