@@ -1,10 +1,14 @@
 <template>
       <div class="flex-rectangle">
-      
-        <div class="book-item">
-            <BookListItem />
-        </div>
-          
+        <div class="book-list">
+          <div class="book-item">
+              <BookListItem />
+          </div>
+        
+          <div class="book-item">
+              <BookListItem />
+          </div>
+        </div>          
       </div>
 </template>
 
@@ -25,6 +29,7 @@ export default {
     display: flex;
     justify-content: space-around;
     align-content: center;
+    flex-direction: row;
     width: 21%;
     height: 700px;
     background: #F4F0FA;

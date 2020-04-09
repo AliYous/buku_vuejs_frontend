@@ -51,8 +51,8 @@ export default {
 
 <style>
     .book-card {
-      border-radius: 3em;
       color: red;
+      margin-bottom: 1.2em;
     }
 
     hr .split {
