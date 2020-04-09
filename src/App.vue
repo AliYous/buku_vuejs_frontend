@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <TheHeader />
-    <v-content>
-      <router-view />
-    </v-content>
+    <router-view />
   </div>
 </template>
 
@@ -13,7 +11,7 @@ import TheHeader from './components/TheHeader'
 export default {
   name: 'App',
   components: {
-    TheHeader,
+    TheHeader
   }
   
 }

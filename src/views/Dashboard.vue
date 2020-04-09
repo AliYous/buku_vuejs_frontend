@@ -1,6 +1,10 @@
 <template>
     <div>
-        <BookList />
+        <div class="container-fluid"> 
+            <BookList />
+            <BookList />
+            <BookList />
+        </div>
     </div>
 </template>
 
@@ -16,5 +20,10 @@ export default {
 </script>
 
 <style>
-
+    .container-fluid {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: stretch;
+    }
 </style>

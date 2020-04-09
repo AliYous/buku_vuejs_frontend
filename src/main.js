@@ -4,8 +4,11 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify';
 import axios from 'axios'
+import { BootstrapVue } from 'bootstrap-vue'
+
 
 Vue.config.productionTip = false
+Vue.use(BootstrapVue)
 
 axios.defaults.baseURL = 'http://localhost:3000/'
 

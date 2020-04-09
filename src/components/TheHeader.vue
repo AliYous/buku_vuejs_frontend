@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="header">
     <v-app-bar
       color="#FFFFFF"
       dense
@@ -49,5 +49,7 @@ export default {
 </script>
 
 <style>
-
+  .header {
+    margin-bottom: 3rem;
+  }
 </style>
