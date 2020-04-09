@@ -2,7 +2,7 @@
       <div class="flex-rectangle">
 
         <div class="book-status">
-          <h1>To read</h1>
+          <h1 class="book-status-text" >{{ status }}</h1>
         </div>
 
         <div class="book-list">
@@ -26,7 +26,8 @@ export default {
   name: 'BookList',
   components: {
     BookListItem
-  }
+  },
+  props: ["status"] 
 }
 </script>
 
@@ -56,6 +57,9 @@ export default {
   margin-top: 2em;
   position:absolute;
   text-align:center;
+}
+.book-status-text {
+  color: #8B69EB;
 }
 
 .book-list {

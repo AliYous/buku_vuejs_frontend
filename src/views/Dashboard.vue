@@ -1,19 +1,42 @@
 <template>
     <div>
         <div class="container-fluid"> 
-            <BookList />
-            <BookList />
-            <BookList />
+                <BookList v-bind:status="statusList[0]"/>
+                <BookList v-bind:status="statusList[1]"/>
+                <BookList v-bind:status="statusList[2]"/>
         </div>
     </div>
 </template>
 
 <script>
 import BookList from '../components/books/BookList'
+import { mapActions } from 'vuex'
+
+
 export default {
     name: 'Dashboard',
     components: {
         BookList
+    },
+    data() {
+        return {
+        statusList: ["In Progress", "To Read", "Read"],
+        bookList: []
+        // readBooks: filterReadBooks()
+        }
+    },
+    created() {
+        this.bookList = this.getAllBooks()
+    },
+
+    methods: {
+        ...mapActions({
+            fetchBooks: 'fetchBooks'
+        }),
+
+        getAllBooks() {
+            this.fetchBooks()
+        }
     }
 
 }
