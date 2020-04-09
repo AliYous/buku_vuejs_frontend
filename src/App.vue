@@ -16,7 +16,10 @@ export default {
 }
 </script>
 
+
 <style>
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -24,7 +27,7 @@ export default {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto Condensed' ,Helvetica, sans-serif;
   line-height: 1.4;
 }
 
