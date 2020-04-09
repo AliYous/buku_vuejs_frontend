@@ -1,13 +1,12 @@
 <template>
   <div>
     <v-app-bar
-      color="deep-purple accent-4"
+      color="#FFFFFF"
       dense
-      dark
     >
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      
 
-      <v-toolbar-title>Page title</v-toolbar-title>
+      <h1 class="toolbar-title"> BUKU </h1>
 
       <v-spacer></v-spacer>
 

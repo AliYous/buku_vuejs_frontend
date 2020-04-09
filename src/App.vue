@@ -19,6 +19,8 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Gotu');
+
 
 * {
   box-sizing: border-box;
@@ -27,8 +29,9 @@ export default {
 }
 
 body {
-  font-family: 'Roboto Condensed' ,Helvetica, sans-serif;
+  font-family: 'Gotu', 'Roboto Condensed' ,Helvetica, sans-serif;
   line-height: 1.4;
+  background: '#FAFAFA';
 }
 
 .btn {
