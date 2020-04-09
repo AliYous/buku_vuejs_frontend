@@ -1,5 +1,6 @@
 <template>
       <div class="flex-rectangle">
+      
         <div class="book-item">
             <BookListItem />
         </div>

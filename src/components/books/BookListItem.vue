@@ -1,20 +1,21 @@
 <template>
   <v-card
-    max-width="344"
-    class="mx-auto"
+    width="26em"
+    class="mx-auto book-card"
+    raised
   >
     <v-list-item>
       <v-list-item-avatar color="grey"></v-list-item-avatar>
       <v-list-item-content>
-        <v-list-item-title class="headline">Our Changing Planet</v-list-item-title>
-        <v-list-item-subtitle>by Kurt Wagner</v-list-item-subtitle>
+        <v-list-item-title class="headline">The War Of Art</v-list-item-title>
+        <v-list-item-subtitle>by Steven Pressfield</v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
 
     <hr class="split">
 
     <v-card-text>
-      Visit ten places on our planet that are undergoing the biggest changes today.
+      Recommended by Harry JMG, resistance
     </v-card-text>
 
     <v-card-actions>
@@ -49,6 +50,11 @@ export default {
 </script>
 
 <style>
+    .book-card {
+      border-radius: 3em;
+      color: red;
+    }
+
     hr .split {
         border: 3px solid #EFEEF1;
     }
