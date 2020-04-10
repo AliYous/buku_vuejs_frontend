@@ -56,7 +56,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" text @click="addBook(book); book = resetBook; dialog = false;">Save</v-btn>
+          <v-btn color="blue darken-1" text @click="addBook(book); dialog = false;">Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -78,13 +78,6 @@ export default {
 				status: this.bookListStatus[1], // index 1 to actually get the db attr name of the status, not the display name
 				purchased: false,
       },
-      resetBook: {
-        title: '',
-        author: '',
-        comment: '',
-        status: this.bookListStatus[1], // index 1 to actually get the db attr name of the status, not the display name
-        purchased: false,
-			},
 			dialog: false,
 		}
 	},
