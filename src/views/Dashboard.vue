@@ -10,7 +10,7 @@
 
 <script>
 import BookList from '../components/books/BookList'
-import axios from 'axios'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
 	name: 'Dashboard',
@@ -20,35 +20,31 @@ export default {
 	data() {
 		return {
 		statusList: ["In Progress", "To Read", "Read"],
-		bookList: [],
-		readBooks: [],
-		booksToRead: [],
-		currentlyReadingBooks: []
 		}
 	},
 	created() {
-		this.fetchAndFilterAllBooks()
+		this.fetchBooks()
 	},
+  computed: mapGetters(['allBooks', 'booksToRead', 'readBooks', 'currentlyReadingBooks']), //Returns the books from the state (stateGetter)
 
 	methods: {
-		async fetchAndFilterAllBooks() {
-			const response = await axios.get('api/v1/books');
-			const bookList = response.data
-			bookList.forEach(book => this.capitalizeBookAttributes(book)) //Capitalizing title, and author attributes of each books
+		...mapActions(['fetchBooks']),
 
-		// Filtering books list based on book reading status
-			this.readBooks = bookList.filter(book => book.status === "read")
-			this.booksToRead = bookList.filter(book => book.status === "to_read")
-			this.currentlyReadingBooks = bookList.filter(book => book.status === "currently_reading")
-		},
+		// async fetchAndFilterAllBooks() {
+		// 	const response = await axios.get('api/v1/books');
+		// 	const bookList = response.data
 
-		capitalizeBookAttributes(book) {
-			book.title = this.capitalizeWords(book.title)
-			book.author = this.capitalizeWords(book.author)
-		},
-		capitalizeWords(string) {
-			return string.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-		}
+		// // Filtering books list based on book reading status
+		// 	this.readBooks = bookList.filter(book => book.status === "read")
+		// 	this.booksToRead = bookList.filter(book => book.status === "to_read")
+		// 	this.currentlyReadingBooks = bookList.filter(book => book.status === "currently_reading")
+		// },
+
+		// async deleteBook(bookId) {
+		// 	await axios.delete(`api/v1/books/${bookId}`)
+		// 	.then(this.bookList = this.bookList.filter(book => book.id !== bookId))
+    //   .catch(err => console.log(err))
+		// },
 		
 	} 
 }

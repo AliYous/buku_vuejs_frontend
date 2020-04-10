@@ -5,6 +5,7 @@
     raised
   >
     <v-list-item>
+      <button class="del">x</button>
       <v-list-item-avatar color="grey"></v-list-item-avatar>
       <v-list-item-content>
         <v-list-item-title class="headline">{{ book.title }}</v-list-item-title>
@@ -45,7 +46,13 @@
 <script>
 export default {
     name: 'BookListItem',
-    props: ['book']
+    props: ['book'],
+
+    methods: {
+      deleteBook(id) {
+        console.log("delete" + id)
+      }
+    }
 
 }
 </script>
@@ -58,5 +65,15 @@ export default {
 
     hr .split {
         border: 3px solid #EFEEF1;
+    }
+
+    .del {
+        background:#ff0000;
+        color: #fff;
+        border: none;
+        padding: 5px 9px;
+        border-radius: 50%;
+        cursor: pointer;
+        float: right;
     }
 </style>

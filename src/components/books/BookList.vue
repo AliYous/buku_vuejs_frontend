@@ -8,7 +8,7 @@
         <div class="book-list">
           <div class="book-list">
             <div class="book-item" v-for="book in books" :key="book.id" >
-                <BookListItem v-bind:book="book" />
+                <BookListItem v-bind:book="book"/>
             </div>
           </div>
         </div>          
