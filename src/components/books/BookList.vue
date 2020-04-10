@@ -1,8 +1,8 @@
 <template>
       <div class="flex-rectangle">
-        <BookListItemAdd />
+        <BookListItemAdd v-bind:bookListStatus="status" />
         <div class="book-status">
-          <h1 class="book-status-text" >{{ status }}</h1>
+          <h1 class="book-status-text" >{{ status[0] }}</h1>
         </div>
 
         <div class="book-list">

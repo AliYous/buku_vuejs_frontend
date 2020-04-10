@@ -18,8 +18,7 @@ const getters = {
 	currentlyReadingBooks: (state) => state.currentlyReadingBooks,
 }
 
-// //The action will call the API, get a response and trigger a mutation that will change the state
-// //We use the action to get the data and then we change the state using the mutation (commit)
+
 const actions = {
 	async fetchBooks({ commit }) {
 		const response = await axios.get('api/v1/books');
@@ -29,9 +28,13 @@ const actions = {
 	},
 
 
-	async addBook({ commit }, title) {
-		const response = await axios.post('api/v1/books', {title, completed: false});
-		commit('NEW_BOOK', response.data)
+	async addBook({ dispatch }, book) {
+		const response = await axios.post('api/v1/books', book);
+		dispatch('addDispatcher', response.data)
+	},
+	addDispatcher({ commit, state }, book) {
+		state.books.unshift(book) //On ajoute le nouveau livre au state puis on commit vers la mutation pour recréer les listes
+		commit("SET_BOOKS", state.books)
 	},
 
 	// We delete the book from the database first, then we dispatch to filter the main bookList, then we commit to reset all the lists - the removed item

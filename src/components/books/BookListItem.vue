@@ -16,7 +16,7 @@
     <hr class="split">
 
     <v-card-text>
-      Recommended by Harry JMG, resistance
+      {{ book.comment }}
     </v-card-text>
 
     <v-card-actions>

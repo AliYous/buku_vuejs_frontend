@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="container-fluid"> 
-					<BookList v-bind:status="statusList[1]" v-bind:books="booksToRead"/>
-					<BookList v-bind:status="statusList[0]" v-bind:books="currentlyReadingBooks"/>
-					<BookList v-bind:status="statusList[2]" v-bind:books="readBooks"/>
+					<BookList v-bind:status="statusList.to_read" v-bind:books="booksToRead"/>
+					<BookList v-bind:status="statusList.currently_reading" v-bind:books="currentlyReadingBooks"/>
+					<BookList v-bind:status="statusList.read" v-bind:books="readBooks"/>
         </div>
     </div>
 </template>
@@ -19,7 +19,11 @@ export default {
 	},
 	data() {
 		return {
-		statusList: ["In Progress", "To Read", "Read"],
+			statusList: {
+				currently_reading: ["In Progress", "currently_reading"], // Splitting each status in Name and actual status (db)
+				to_read: ["To Read", "to_read"],
+				read: ["Read", "read"]
+			}
 		}
 	},
 	created() {
