@@ -7,14 +7,10 @@
 
         <div class="book-list">
           <div class="book-list">
-            <div class="book-item">
-                <BookListItem />
+            <div class="book-item" v-for="book in books" :key="book.id" >
+                <BookListItem v-bind:book="book" />
             </div>
-          
-            <div class="book-item">
-                <BookListItem />
-            </div>
-        </div>
+          </div>
         </div>          
       </div>
 </template>
@@ -27,7 +23,7 @@ export default {
   components: {
     BookListItem
   },
-  props: ["status"] 
+  props: ["status", "books"] 
 }
 </script>
 

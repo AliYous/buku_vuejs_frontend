@@ -7,8 +7,8 @@
     <v-list-item>
       <v-list-item-avatar color="grey"></v-list-item-avatar>
       <v-list-item-content>
-        <v-list-item-title class="headline">The War Of Art</v-list-item-title>
-        <v-list-item-subtitle>by Steven Pressfield</v-list-item-subtitle>
+        <v-list-item-title class="headline">{{ book.title }}</v-list-item-title>
+        <v-list-item-subtitle>by {{ book.author }}</v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
 
@@ -44,7 +44,8 @@
 
 <script>
 export default {
-    name: 'BookListItem'
+    name: 'BookListItem',
+    props: ['book']
 
 }
 </script>
