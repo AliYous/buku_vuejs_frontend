@@ -25,7 +25,7 @@ const actions = {
 		const response = await axios.get('api/v1/books');
 		const bookList = response.data
 		bookList.forEach(book => bookHelper.capitalizeBookAttributes(book)) //Capitalizing title, and author attributes of each books
-		commit("setBooks" , bookList) 
+		commit("SET_BOOKS" , bookList) 
 	},
 
 
@@ -34,10 +34,15 @@ const actions = {
 // 		// commit('newBook', response.data)
 // 	},
 
-// 	async deleteBook({ commit }, id) {
-// 		// await axios.delete(`https://jsonplaceholder.typicode.com/books/${id}`)
-// 		// commit('removeBook', id)
-// 	},
+	// We delete the book from the database first, then we dispatch to filter the main bookList, then we commit to reset all the lists - the removed item
+	async deleteBook({ dispatch }, book) {
+		await axios.delete(`api/v1/books/${book.id}`)
+		dispatch("deleteDispatcher", book.id)
+	},
+	deleteDispatcher({ commit, state },  id) {
+		const books = state.books.filter(book => book.id !== id)
+		commit("SET_BOOKS", books )
+	}
 
 // 	async updateBook({ commit }, updatedBook) {
 // 		// const response = await axios.put(`https://jsonplaceholder.typicode.com/books/${updatedBook.id}`, updatedBook);
@@ -47,16 +52,14 @@ const actions = {
 
 const mutations = {
 
-	setBooks: (state, books) => {
+	SET_BOOKS: (state, books) => {
 		state.books = books;
 		state.booksToRead = books.filter(book => book.status === "to_read")
 		state.readBooks = books.filter(book => book.status === "read")
 		state.currentlyReadingBooks = books.filter(book => book.status === "currently_reading")
-	}
+	},
 
     // newBook: (state, book) => state.books.unshift(book),
-
-	// removeBook: (state, id) => state.books = state.books.filter(book => book.id !== id),
 
 	// updateBook: (state, updatedBook) => {
 		// const index = state.books.findIndex(book => book.id === updatedBook.id)
