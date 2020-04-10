@@ -29,10 +29,10 @@ const actions = {
 	},
 
 
-// 	async addBook({ commit }, title) {
-// 		// const response = await axios.post('https://jsonplaceholder.typicode.com/books', {title, completed: false});
-// 		// commit('newBook', response.data)
-// 	},
+	async addBook({ commit }, title) {
+		const response = await axios.post('api/v1/books', {title, completed: false});
+		commit('NEW_BOOK', response.data)
+	},
 
 	// We delete the book from the database first, then we dispatch to filter the main bookList, then we commit to reset all the lists - the removed item
 	async deleteBook({ dispatch }, book) {
@@ -59,7 +59,7 @@ const mutations = {
 		state.currentlyReadingBooks = books.filter(book => book.status === "currently_reading")
 	},
 
-    // newBook: (state, book) => state.books.unshift(book),
+    NEW_BOOK: (state, book) => state.books.unshift(book),
 
 	// updateBook: (state, updatedBook) => {
 		// const index = state.books.findIndex(book => book.id === updatedBook.id)

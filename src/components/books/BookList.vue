@@ -1,6 +1,6 @@
 <template>
       <div class="flex-rectangle">
-
+        <BookListItemAdd />
         <div class="book-status">
           <h1 class="book-status-text" >{{ status }}</h1>
         </div>
@@ -17,11 +17,13 @@
 
 <script>
 import BookListItem from './BookListItem'
+import BookListItemAdd from './BookListItemAdd'
 
 export default {
   name: 'BookList',
   components: {
-    BookListItem
+    BookListItem,
+    BookListItemAdd
   },
   props: ["status", "books"] 
 }
@@ -29,38 +31,37 @@ export default {
 
 <style>
 
- .flex-rectangle{
-    display: flex;
-    justify-content: space-around;
-    align-content: center;
-    flex-direction: row;
-    width: 21%;
-    height: 700px;
-    background: #F4F0FA;
-    border-radius: 3%;
-}
-.flex-rectangle:before{
-    content: "";
-    display: block;
-    padding-top: 25%;
-}
+  .flex-rectangle{
+      display: flex;
+      justify-content: space-around;
+      align-content: center;
+      flex-direction: row;
+      width: 21%;
+      height: 700px;
+      background: #F4F0FA;
+      border-radius: 3%;
+  }
+  .flex-rectangle:before{
+      content: "";
+      display: block;
+      padding-top: 25%;
+  }
 
-.book-item {
-  margin-top: 1rem;
-}
+  .book-item {
+    margin-top: 1rem;
+  }
 
-.book-status {
-  margin-top: 2em;
-  position:absolute;
-  text-align:center;
-}
-.book-status-text {
-  color: #8B69EB;
-}
+  .book-status {
+    margin-top: 2em;
+    position:absolute;
+    text-align:center;
+  }
+  .book-status-text {
+    color: #8B69EB;
+  }
 
-.book-list {
-  margin-top: 3em;
-}
-
+  .book-list {
+    margin-top: 3em;
+  }
 
 </style>
