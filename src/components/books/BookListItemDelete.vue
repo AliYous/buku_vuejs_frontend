@@ -1,6 +1,6 @@
 <template>
   <div data-app>
-    <button class="del" @click="dialog = true" >x</button>
+    <v-icon @click="dialog = true" >mdi-trash-can-outline</v-icon>
 
 			<v-dialog
 					v-model="dialog"
