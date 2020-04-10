@@ -1,8 +1,6 @@
 import axios from 'axios'
 import bookHelper from '../helpers/BookHelper'
-// const API_URL = 'http://localhost:3000'
 
-// //This where the data sits
 const state = {
 	books: [],
 	booksToRead: [],
@@ -10,7 +8,6 @@ const state = {
 	currentlyReadingBooks: [],
 }
 
-// //Allows to access state information
 const getters = {
 	allBooks: (state) => state.books,
 	booksToRead: (state) => state.booksToRead,
