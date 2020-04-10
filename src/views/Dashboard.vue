@@ -1,8 +1,8 @@
 <template>
     <div>
         <div class="container-fluid"> 
-					<BookList v-bind:status="statusList[0]" v-bind:books="currentlyReadingBooks"/>
 					<BookList v-bind:status="statusList[1]" v-bind:books="booksToRead"/>
+					<BookList v-bind:status="statusList[0]" v-bind:books="currentlyReadingBooks"/>
 					<BookList v-bind:status="statusList[2]" v-bind:books="readBooks"/>
         </div>
     </div>

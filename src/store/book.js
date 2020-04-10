@@ -1,4 +1,5 @@
 import axios from 'axios'
+import bookHelper from '../helpers/BookHelper'
 // const API_URL = 'http://localhost:3000'
 
 // //This where the data sits
@@ -23,17 +24,10 @@ const actions = {
 	async fetchBooks({ commit }) {
 		const response = await axios.get('api/v1/books');
 		const bookList = response.data
-		// bookList.forEach(book => capitalizeBookAttributes(book)) Capitalizing title, and author attributes of each books
-
+		bookList.forEach(book => bookHelper.capitalizeBookAttributes(book)) //Capitalizing title, and author attributes of each books
 		commit("setBooks" , bookList) 
 	},
-	// capitalizeBookAttributes(book) {
-	// 	book.title = capitalizeWords(book.title)
-	// 	book.author = capitalizeWords(book.author)
-	// },
-	// capitalizeWords(string) {
-	// 	return string.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-	// }
+
 
 // 	async addBook({ commit }, title) {
 // 		// const response = await axios.post('https://jsonplaceholder.typicode.com/books', {title, completed: false});
