@@ -51,6 +51,7 @@ export default {
   }
 
   .book-item {
+    position: relative;
     margin-top: 1rem;
   }
 
