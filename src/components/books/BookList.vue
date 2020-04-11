@@ -1,15 +1,13 @@
 <template>
       <div class="flex-rectangle">
-        <BookListItemAdd v-bind:bookListStatus="status" />
+        <!-- <BookListItemAdd v-bind:bookListStatus="status" /> -->
         <div class="book-status">
           <h1 class="book-status-text" >{{ status[0] }}</h1>
         </div>
 
         <div class="book-list">
-          <div class="book-list">
-            <div class="book-item" v-for="book in books" :key="book.id" >
-                <BookListItem v-bind:book="book"/>
-            </div>
+          <div class="book-item" v-for="book in books" :key="book.id" >
+              <BookListItem v-bind:book="book"/>
           </div>
         </div>          
       </div>
@@ -17,13 +15,13 @@
 
 <script>
 import BookListItem from './BookListItem'
-import BookListItemAdd from './BookListItemAdd'
+// import BookListItemAdd from './BookListItemAdd'
 
 export default {
   name: 'BookList',
   components: {
     BookListItem,
-    BookListItemAdd
+    // BookListItemAdd
   },
   props: ["status", "books"] 
 }
@@ -34,10 +32,8 @@ export default {
   .flex-rectangle{
       display: flex;
       justify-content: space-around;
-      align-content: center;
-      flex-direction: row;
       width: 21%;
-      height: 700px;
+      height: 52em;
       background: #F4F0FA;
       border-radius: 3%;
   }
@@ -61,7 +57,21 @@ export default {
   }
 
   .book-list {
-    margin-top: 3em;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    height: 45em;
+    width: 26%;
+    margin-top: 6em;
+    overflow-y: scroll;
+  }
+
+  .book-list::-webkit-scrollbar-thumb
+  {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
   }
 
 </style>
