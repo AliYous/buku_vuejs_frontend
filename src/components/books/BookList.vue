@@ -61,7 +61,8 @@ export default {
     text-align:center;
   }
   .book-status-text {
-    color: #8B69EB;
+    color: black;
+    /* color: #8B69EB; */
   }
 
   .book-list {
