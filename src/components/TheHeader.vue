@@ -1,11 +1,9 @@
 <template>
-  <div class="header">
+  <nav class="header">
     <v-app-bar
       color="#FFFFFF"
       dense
     >
-      
-
       <h1 class="toolbar-title"> BUKU </h1>
 
       <v-spacer></v-spacer>
@@ -39,7 +37,7 @@
         </v-list>
       </v-menu>
     </v-app-bar>
-  </div>
+  </nav>
 </template>
 
 <script>
