@@ -6,8 +6,12 @@
         </div>
 
         <div class="book-list">
-          <div class="book-item" v-for="book in books" :key="book.id" >
-              <BookListItem v-bind:book="book"/>
+          <div class="book-scroll">
+          <vuescroll>       
+              <div class="book-item" v-for="book in books" :key="book.id" >
+                  <BookListItem v-bind:book="book"/>
+              </div>
+          </vuescroll>
           </div>
         </div>          
       </div>
@@ -16,12 +20,15 @@
 <script>
 import BookListItem from './BookListItem'
 // import BookListItemAdd from './BookListItemAdd'
+import vuescroll from 'vuescroll';
+
 
 export default {
   name: 'BookList',
   components: {
     BookListItem,
     // BookListItemAdd
+    vuescroll
   },
   props: ["status", "books"] 
 }
@@ -60,18 +67,13 @@ export default {
     position: absolute;
     display: flex;
     flex-direction: column;
-    align-items: center;    
+    align-items: center; 
     height: 45em;
     width: 26%;
     margin-top: 6em;
-    overflow-y: scroll;
   }
 
-  .book-list::-webkit-scrollbar-thumb
-  {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color: #555;
+  .book-scroll {
+    height: 45em;
   }
-
 </style>
