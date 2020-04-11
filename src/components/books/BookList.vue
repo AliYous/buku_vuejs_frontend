@@ -1,15 +1,17 @@
 <template>
       <div class="flex-rectangle">
-        <BookListItemAdd v-bind:bookListStatus="status" />
+        <!-- <BookListItemAdd v-bind:bookListStatus="status" /> -->
         <div class="book-status">
           <h1 class="book-status-text" >{{ status[0] }}</h1>
         </div>
 
         <div class="book-list">
-          <div class="book-list">
-            <div class="book-item" v-for="book in books" :key="book.id" >
-                <BookListItem v-bind:book="book"/>
-            </div>
+          <div class="book-scroll">
+          <vuescroll>       
+              <div class="book-item" v-for="book in books" :key="book.id" >
+                  <BookListItem v-bind:book="book"/>
+              </div>
+          </vuescroll>
           </div>
         </div>          
       </div>
@@ -17,13 +19,16 @@
 
 <script>
 import BookListItem from './BookListItem'
-import BookListItemAdd from './BookListItemAdd'
+// import BookListItemAdd from './BookListItemAdd'
+import vuescroll from 'vuescroll';
+
 
 export default {
   name: 'BookList',
   components: {
     BookListItem,
-    BookListItemAdd
+    // BookListItemAdd
+    vuescroll
   },
   props: ["status", "books"] 
 }
@@ -34,10 +39,8 @@ export default {
   .flex-rectangle{
       display: flex;
       justify-content: space-around;
-      align-content: center;
-      flex-direction: row;
       width: 21%;
-      height: 700px;
+      height: 52em;
       background: #F4F0FA;
       border-radius: 3%;
   }
@@ -48,7 +51,8 @@ export default {
   }
 
   .book-item {
-    margin-top: 1rem;
+    position: relative;
+      margin-top: 1rem;
   }
 
   .book-status {
@@ -61,7 +65,16 @@ export default {
   }
 
   .book-list {
-    margin-top: 3em;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    height: 45em;
+    width: 26%;
+    margin-top: 6em;
   }
 
+  .book-scroll {
+    height: 45em;
+  }
 </style>
