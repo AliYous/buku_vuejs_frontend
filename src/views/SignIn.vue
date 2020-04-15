@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
       <h1>SignIn View Component</h1>
       <form @submit.prevent="onSubmit">
           <div>
@@ -31,15 +31,20 @@ import { mapActions } from 'vuex'
 
 export default {
     name: 'SignIn',
-    props: ['email'],
+    props: ['emailInput'],
 
     data() {
         return {
             form: {
-                email: '',
+                email: this.$props.emailInput,
                 password: ''
             }
         }
+    },
+    
+    created() {
+        console.log(this.form.email)
+        console.log(this.$props.emailInput)
     },
 
     methods: {
@@ -55,6 +60,6 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  
 </style>

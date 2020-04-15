@@ -12,7 +12,10 @@ Vue.use(VueRouter)
     {
       path: '/',
       name: 'LandingPage',
-      component: LandingPage
+      component: LandingPage,
+      meta: {
+        guest: true
+      }
     },
     {
       path: '/dashboard',
@@ -25,7 +28,8 @@ Vue.use(VueRouter)
       component: SignIn,
       meta: {
           guest: true
-      }
+      },
+      props: true
     },
     {
       path: '/signup',

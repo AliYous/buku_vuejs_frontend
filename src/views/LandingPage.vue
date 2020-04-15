@@ -57,7 +57,7 @@ export default {
 		},
 		methods: {
 			onSubmit() {
-				console.log('ok')
+				this.$router.push({ name: 'SignIn', params: {emailInput: this.email }})
 			}
 		}
 
