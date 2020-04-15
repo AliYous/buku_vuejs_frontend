@@ -7,10 +7,12 @@
 
         <div class="book-list">
           <div class="book-scroll">
-          <vuescroll>       
-              <div class="book-item" v-for="book in books" :key="book.id" >
-                  <BookListItem v-bind:book="book"/>
-              </div>
+          <vuescroll>    
+              <Container @drop="onDrop" group-name="bookList">   
+                <Draggable class="book-item" v-for="book in books" :key="book.id" >
+                    <BookListItem v-bind:book="book"/>
+                </Draggable>
+              </Container>
           </vuescroll>
           </div>
         </div>          
@@ -18,9 +20,10 @@
 </template>
 
 <script>
-import BookListItem from './BookListItem'
+import BookListItem from './BookListItem';
 // import BookListItemAdd from './BookListItemAdd'
 import vuescroll from 'vuescroll';
+import { Container, Draggable } from "vue-smooth-dnd";
 
 
 export default {
@@ -28,13 +31,20 @@ export default {
   components: {
     BookListItem,
     // BookListItemAdd
-    vuescroll
+    vuescroll,
+    Container,
+    Draggable
   },
-  props: ["status", "books"] 
+  props: ["status", "books"],
+  methods: {
+    onDrop() {
+      console.log("ok")
+    }
+  }
 }
 </script>
 
-<style>
+<style scoped>
 
   .flex-rectangle{
       display: flex;

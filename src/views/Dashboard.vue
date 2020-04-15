@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="container-fluid"> 
-					<BookList v-bind:status="statusList.to_read" v-bind:books="booksToRead"/>
-					<BookList v-bind:status="statusList.currently_reading" v-bind:books="currentlyReadingBooks"/>
-					<BookList v-bind:status="statusList.read" v-bind:books="readBooks"/>
+			<BookList v-bind:status="statusList.to_read" v-bind:books="booksToRead"/>
+			<BookList v-bind:status="statusList.currently_reading" v-bind:books="currentlyReadingBooks"/>
+			<BookList v-bind:status="statusList.read" v-bind:books="readBooks"/>
         </div>
     </div>
 </template>
@@ -37,7 +37,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 	.container-fluid {
 		display: flex;
 		flex-direction: row;
