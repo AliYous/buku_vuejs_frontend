@@ -31,6 +31,7 @@ import { mapActions } from 'vuex'
 
 export default {
     name: 'SignIn',
+    props: ['email'],
 
     data() {
         return {

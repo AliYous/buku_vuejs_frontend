@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Dashboard from './views/Dashboard.vue'
 import SignIn from './views/SignIn.vue'
 import SignUp from './views/SignUp.vue'
+import LandingPage from './views/LandingPage'
 
 
 Vue.use(VueRouter)
@@ -10,6 +11,11 @@ Vue.use(VueRouter)
   const routes = [
     {
       path: '/',
+      name: 'LandingPage',
+      component: LandingPage
+    },
+    {
+      path: '/dashboard',
       name: 'Dashboard',
       component: Dashboard
     },

@@ -38,11 +38,10 @@
       </v-menu>
     </v-app-bar> -->
 
-     <v-navigation-drawer
+     <!-- <v-navigation-drawer
         v-model="drawer"
         :color="`#8B69EB`"
         :mini-variant="true"
-        :right="right"
         fixed
         clipped
         dark
@@ -70,7 +69,12 @@
             </v-list-item-content>
           </v-list-item>
         </v-list>
-    </v-navigation-drawer>
+    </v-navigation-drawer> -->
+
+
+    <v-toolbar app flat>
+      <img class="mr-3 logo" :src="require('@/assets/buku-logo.png')" height="500"/>
+    </v-toolbar>
   </nav>
 </template>
 
@@ -86,10 +90,14 @@ export default {
 </script>
 
 <style>
-  .header {
+  /* .header {
     margin-bottom: 3rem;
   }
   .avatar {
     padding-right: 15px;
+  } */
+  .logo {
+    margin-top: 6em;
+    margin-left: -3em;
   }
 </style>

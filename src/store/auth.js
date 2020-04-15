@@ -5,11 +5,12 @@ export default {
 
 	state: {
 		token: null,
-		user: null
+		user: null,
+		email: null
 	},
 
 	getters: {
-
+		signInEmail: (state) => state.email
 	},
 
 	actions: {
@@ -28,7 +29,12 @@ export default {
 		async signUp(_, credentials) {
 			let response =  await axios.post('signup', credentials)
 			console.log(response.data)
-			window.location.href = 'signin';		}
+			window.location.href = 'signin';		
+		},
+
+		setEmailState({ commit }, email) {
+			commit('SET_EMAIL', email)
+		}
 	},
 
 	mutations: {
@@ -38,6 +44,10 @@ export default {
 
 		SET_USER (state, user) {
 			state.user = user
+		},
+
+		SET_EMAIL (state, email) {
+			state.email = email
 		}
 	}
 }
