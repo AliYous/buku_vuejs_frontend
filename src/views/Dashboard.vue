@@ -41,10 +41,7 @@ export default {
 	},
 
 	methods: {
-		...mapActions(['fetchBooks']),	
-		logBooks() {
-			console.log(this.bookList)
-		}	
+		...mapActions(['fetchBooks'])
 	} 
 }
 </script>

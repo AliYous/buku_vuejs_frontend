@@ -1,5 +1,5 @@
 // import axios from 'axios'
-// import bookHelper from '../helpers/BookHelper'
+import bookHelper from '../helpers/BookHelper'
 import { db } from '../main'
 
 const state = {
@@ -30,10 +30,11 @@ const actions = {
 					bookList.push(doc.data());
 				});
 
+				bookList.forEach(book => bookHelper.capitalizeBookAttributes(book)) //Capitalizing title, and author attributes of each books
+
 				commit("SET_BOOKS", bookList);
 			}
 		});
-			// bookList.forEach(book => bookHelper.capitalizeBookAttributes(book)) //Capitalizing title, and author attributes of each books
 			// console.log(bookList)
 			// commit("SET_BOOKS" , bookList)
 			
@@ -70,7 +71,6 @@ const actions = {
 const mutations = {
 
 	SET_BOOKS: (state, books) => {
-		console.log(books)
 		state.books = books;
 		state.booksToRead = books.filter(book => book.status === "to_read")
 		state.readBooks = books.filter(book => book.status === "read")

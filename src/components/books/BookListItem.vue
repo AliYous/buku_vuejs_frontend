@@ -49,7 +49,7 @@ export default {
     props: ['book'],
     components: {
       BookListItemDelete
-   },
+    },
 
     methods: {
       deleteBook(id) {
