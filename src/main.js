@@ -28,6 +28,7 @@ firebase.auth().onAuthStateChanged(user => {
   store.dispatch("auth/fetchUser", user);
 });
 
+
 axios.defaults.baseURL = 'http://localhost:3000/'
 
 new Vue({
