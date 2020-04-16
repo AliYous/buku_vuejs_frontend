@@ -8,13 +8,13 @@
 		<div class="container-fluid">
 			<v-card  class="mx-auto card" max-width="700">
 
-				<h1 v-if="signUp">Register</h1>
-				<h1 v-if="!signUp">Sign in</h1>
+				<h1 v-if="!userExists">Register</h1>
+				<h1 v-if="userExists">Sign in</h1>
 				
 				<div v-if="error" class="alert alert-danger error">{{error}}</div>
 					<form class="form container">
 						<v-text-field class="text-field"
-						v-if="signUp"
+						v-if="!userExists"
 						v-model="form.first_name"
 						required
 						outlined
@@ -43,7 +43,7 @@
 						></v-text-field>
 
 						<v-text-field
-						v-if="signUp"
+						v-if="!userExists"
 						v-model="form.password_confirmation"
 						required
 						outlined
@@ -53,14 +53,14 @@
 						type="password"
 						></v-text-field>
 
-						<v-btn v-if="signUp" color="#493E92" rounded large dark @click="onSignUp">register</v-btn>
-						<v-btn v-if="!signUp" color="#493E92" rounded large dark @click="onSignIn">Sign in</v-btn>
+						<v-btn v-if="!userExists" color="#493E92" :loading='loading' rounded large dark @click="onSignUp">register</v-btn>
+						<v-btn v-if="userExists" color="#493E92" :loading='loading' rounded large dark @click="onSignIn">Sign in</v-btn>
 
 
 					</form>
 
-					<a v-if="signUp" @click="changeSignUpBool" role="button" class="already-member-text">Already a member?</a>
-					<a v-if="!signUp" @click="changeSignUpBool" role="button" class="already-member-text">Create an account</a>
+					<a v-if="!userExists" @click="changeUserExistsBool" role="button" class="already-member-text">Already a member?</a>
+					<a v-if="userExists" @click="changeUserExistsBool" role="button" class="already-member-text">Create an account</a>
 
 			</v-card>
 		</div>
@@ -74,7 +74,7 @@ import firebase from 'firebase';
 
 export default {
 	name: 'SignIn',
-	props: ['emailInput'],
+	props: ['emailInput', 'userExistsProps'],
 
 	data() {
 		return {
@@ -84,7 +84,8 @@ export default {
 				password: '',
 				password_confirmation: ''
 			},
-			signUp: true,
+			userExists: this.$props.userExistsProps,
+			loading: false, // for adding loading animation to submit btn
 			error: null
 		}
 	},
@@ -95,13 +96,33 @@ export default {
 		}),
 			
 		onSignIn() {
-			// this.signIn(this.form)
-			
+			if(this.form.email === '' || this.form.password === '') {
+				this.error = 'Please fill in all required fields'
+			}
+			else {
+				this.loading = true
+				firebase
+					.auth()
+					.signInWithEmailAndPassword(this.form.email, this.form.password)
+					.then(() => {
+						this.loading = false
+						this.$router.replace({ name: "Dashboard" });
+					})
+					.catch(err => {
+						this.error = err.message;
+						this.loading = false
+					});
+			}
 		},
 		onSignUp() {
-			if (this.form.password !== this.form.password_confirmation) {
+			this.loading = true
+			if(this.form.email === '' || this.form.password === '' || this.form.password_confirmation === '') {
+				this.error = 'Please fill in all required fields'
+				this.loading = false
+			}
+			else if (this.form.password !== this.form.password_confirmation) {
 				this.error = 'Password and password confirmation do not match.'
-				console.log(this.error)
+				this.loading = false
 			}
 			else {
 				firebase
@@ -112,15 +133,18 @@ export default {
 							.updateProfile({
 								displayName: this.form.first_name
 							})
-							.then(() => {});
+							.then(() => {
+								this.loading = false
+							});
 					})
 					.catch(err => {
 						this.error = err.message;
+						this.loading = false
 					});
 			}
 		},
-		changeSignUpBool() {
-			this.signUp = !this.signUp
+		changeUserExistsBool() {
+			this.userExists = !this.userExists
 		}
 	}
 

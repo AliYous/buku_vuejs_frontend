@@ -48,6 +48,8 @@
 </template>
 
 <script>
+import firebase from 'firebase';
+
 export default {
 		name: 'LandingPage',
 		data() {
@@ -57,7 +59,22 @@ export default {
 		},
 		methods: {
 			onSubmit() {
-				this.$router.push({ name: 'SignIn', params: {emailInput: this.email }})
+			//We send a request just to see if user exists in the db, no user will ever have this pwd so it shall always return err, then we act according to the type of err
+				firebase
+					.auth()
+					.signInWithEmailAndPassword(this.email, 'pwdinvalidforsure1267$$3impossiblepasswdpassworduser')
+					.catch(err => {
+						// If the email does not exist, we show the signUp fields
+						if (err.code === "auth/user-not-found") {
+							console.log("redirect to signup")
+							this.$router.push({ name: 'SignIn', params: {emailInput: this.email, userExistsProps: false}})
+						}
+						// If it does exist, we show the signIn fields
+						else {
+							console.log('redirect to signin')
+							this.$router.push({ name: 'SignIn', params: {emailInput: this.email, userExistsProps: true}})
+						}
+					});
 			}
 		}
 
