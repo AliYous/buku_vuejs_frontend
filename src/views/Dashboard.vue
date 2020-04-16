@@ -26,10 +26,18 @@ export default {
 			}
 		}
 	},
+	computed: {
+		...mapGetters([
+			'allBooks',
+			'booksToRead',
+			'readBooks',
+			'currentlyReadingBooks',
+			]), //Returns the books from the state (stateGetter)
+	},
+
 	created() {
 		this.fetchBooks()
 	},
-  computed: mapGetters(['allBooks', 'booksToRead', 'readBooks', 'currentlyReadingBooks']), //Returns the books from the state (stateGetter)
 
 	methods: {
 		...mapActions(['fetchBooks']),		

@@ -137,7 +137,7 @@ export default {
 							})
 							.then(() => {
 								this.loading = false
-								this.changeUserExistsBool()
+								this.changeUserExistsBool() // after user is registered, render only the signIn fields (pre-filled) so he can sign in
 							});
 					})
 					.catch(err => {

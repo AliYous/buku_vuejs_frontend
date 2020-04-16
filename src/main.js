@@ -24,6 +24,9 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(user => {
+  store.dispatch("auth/fetchUser", user);
+});
 
 axios.defaults.baseURL = 'http://localhost:3000/'
 

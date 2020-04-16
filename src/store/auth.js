@@ -1,53 +1,37 @@
-import axios from 'axios'
-
 export default {
 	namespaced: true,
 
 	state: {
-		token: null,
-		user: null,
-		email: null
-	},
-
-	getters: {
-		signInEmail: (state) => state.email
-	},
-
-	actions: {
-		async signIn({ dispatch }, credentials) {
-			let response = await axios.post('signin', credentials)
-			console.log(response.data)
-			dispatch('attempt', response) // csrf = token 
-		},
-		async attempt({ commit }, response) {
-			console.log(response.data.user)
-			commit('SET_TOKEN', response.data.csrf) 
-			commit('SET_USER', response.data.user )
-			window.location.href = 'dashboard'
-		},
-
-		async signUp(_, credentials) {
-			let response =  await axios.post('signup', credentials)
-			console.log(response.data)
-			window.location.href = 'signin';		
-		},
-
-		setEmailState({ commit }, email) {
-			commit('SET_EMAIL', email)
+		user: {
+			loggedIn: false,
+			data: null
 		}
 	},
 
+	getters: {
+		user: (state) => state.user
+	},
+
+	actions: {
+    fetchUser({ commit }, user) {
+      commit("SET_LOGGED_IN", user !== null);
+      if (user) {
+        commit("SET_USER", {
+          displayName: user.displayName,
+          email: user.email
+        });
+      } else {
+        commit("SET_USER", null);
+      }
+    }
+  },
+
 	mutations: {
-		SET_TOKEN (state, token) {
-			state.token = token
+		SET_LOGGED_IN(state, value) {
+			state.user.loggedIn = value;
 		},
-
-		SET_USER (state, user) {
-			state.user = user
-		},
-
-		SET_EMAIL (state, email) {
-			state.email = email
+		SET_USER(state, data) {
+			state.user.data = data;
 		}
 	}
 }
