@@ -108,7 +108,7 @@ export default {
 					.signInWithEmailAndPassword(this.form.email, this.form.password)
 					.then(() => {
 						this.loading = false
-						this.$router.replace({ name: "Dashboard" });
+						this.$router.replace({ name: "Dashboard" })
 					})
 					.catch(err => {
 						this.error = err.message;

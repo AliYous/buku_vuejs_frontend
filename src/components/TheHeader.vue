@@ -35,6 +35,7 @@ export default {
           .auth()
           .signOut()
           .then(() => {
+            this.userLoggedIn = false
             this.$router.replace({
               name: "Auth",
               params: {userExistsProps: true}
