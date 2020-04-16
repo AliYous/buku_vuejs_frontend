@@ -24,7 +24,6 @@ const actions = {
 				//this.$router.push('/HelloWorld')
 				console.log('empty booklist returned')
 			} else {
-				this.loading = false;
 				var bookList = [];
 				querySnapshot.forEach(doc => {
 					bookList.push(doc.data());
@@ -34,18 +33,12 @@ const actions = {
 
 				commit("SET_BOOKS", bookList);
 			}
-		});
-			// console.log(bookList)
-			// commit("SET_BOOKS" , bookList)
-			
-		
+		});		
 	},
-
-
 	async addBook({ dispatch }, book) {
-		const newBook = {} // New book that was created in the db 		
-		dispatch('addDispatcher', newBook)
-		console.log(book) // just to avoid the error, to remove 	
+		db.collection('books').add(book).then( () => {
+			dispatch('addDispatcher', book)
+		})	
 	},
 	addDispatcher({ commit, state }, book) {
 		state.books.unshift(book) //On ajoute le nouveau livre au state puis on commit vers la mutation pour recréer les listes
