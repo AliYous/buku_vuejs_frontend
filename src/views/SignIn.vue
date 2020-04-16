@@ -10,10 +10,21 @@
 
 				<h1 v-if="signUp">Register</h1>
 				<h1 v-if="!signUp">Sign in</h1>
-
+				
+				<div v-if="error" class="alert alert-danger error">{{error}}</div>
 					<form class="form container">
 						<v-text-field class="text-field"
-						v-model="this.form.email"
+						v-if="signUp"
+						v-model="form.first_name"
+						required
+						outlined
+						color="#493E92"
+						rounded
+						label="First name"
+						></v-text-field>
+
+						<v-text-field class="text-field"
+						v-model="form.email"
 						required
 						outlined
 						color="#493E92"
@@ -22,7 +33,7 @@
 						></v-text-field>
 
 						<v-text-field
-						v-model="this.form.password"
+						v-model="form.password"
 						required
 						outlined
 						color="#493E92"
@@ -33,7 +44,7 @@
 
 						<v-text-field
 						v-if="signUp"
-						v-model="this.form.password_confirmation"
+						v-model="form.password_confirmation"
 						required
 						outlined
 						color="#493E92"
@@ -58,6 +69,7 @@
 
 <script>
 import { mapActions } from 'vuex'
+import firebase from 'firebase';
 
 
 export default {
@@ -67,19 +79,16 @@ export default {
 	data() {
 		return {
 			form: {
+				first_name: '',
 				email: this.$props.emailInput,
 				password: '',
 				password_confirmation: ''
 			},
-			signUp: true
+			signUp: true,
+			error: null
 		}
 	},
 	
-	created() {
-		console.log(this.form.email)
-		console.log(this.$props.emailInput)
-	},
-
 	methods: {
 		...mapActions({
 			signIn: 'auth/signIn'
@@ -87,10 +96,28 @@ export default {
 			
 		onSignIn() {
 			// this.signIn(this.form)
-			console.log("sign in")
+			
 		},
 		onSignUp() {
-			console.log("sign up")
+			if (this.form.password !== this.form.password_confirmation) {
+				this.error = 'Password and password confirmation do not match.'
+				console.log(this.error)
+			}
+			else {
+				firebase
+					.auth()
+					.createUserWithEmailAndPassword(this.form.email, this.form.password)
+					.then(data => {
+						data.user
+							.updateProfile({
+								displayName: this.form.first_name
+							})
+							.then(() => {});
+					})
+					.catch(err => {
+						this.error = err.message;
+					});
+			}
 		},
 		changeSignUpBool() {
 			this.signUp = !this.signUp
@@ -142,4 +169,7 @@ export default {
 		text-decoration: underline;
 	}
 	
+	.error {
+		color: #EE5C66;
+	}
 </style>
