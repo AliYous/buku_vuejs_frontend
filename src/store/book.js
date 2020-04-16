@@ -35,7 +35,7 @@ const actions = {
 			}
 		});		
 	},
-	async addBook({ dispatch }, book) {
+	addBook({ dispatch }, book) {
 		db.collection('books').add(book).then( () => {
 			dispatch('addDispatcher', book)
 		})	
@@ -46,8 +46,7 @@ const actions = {
 	},
 
 	// We delete the book from the database first, then we dispatch to filter the main bookList, then we commit to reset all the lists - the removed item
-	async deleteBook({ dispatch }, book) {
-		// delete the book from db then dispatch
+	deleteBook({ dispatch }, book) {
 		dispatch("deleteDispatcher", book.id)
 	},
 	deleteDispatcher({ commit, state },  id) {
