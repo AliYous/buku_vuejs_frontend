@@ -4,7 +4,6 @@
 			<BookList v-bind:status="statusList.to_read" v-bind:books="booksToRead"/>
 			<BookList v-bind:status="statusList.currently_reading" v-bind:books="currentlyReadingBooks"/>
 			<BookList v-bind:status="statusList.read" v-bind:books="readBooks"/>
-			<a role="button" @click="logBooks"> console log bookList</a>
         </div>
     </div>
 </template>
