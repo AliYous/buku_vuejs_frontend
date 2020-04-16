@@ -3,15 +3,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify';
-import axios from 'axios'
-import * as firebase from "firebase";
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+import VueFirestore from 'vue-firestore'
 import { BootstrapVue } from 'bootstrap-vue'
 
 
-
-
 Vue.config.productionTip = false
-Vue.use(BootstrapVue)
 
 var firebaseConfig = {
   apiKey: "AIzaSyDEsuRpqYFL3ViBKKThLSpKNbgBeatOUfA",
@@ -28,8 +26,11 @@ firebase.auth().onAuthStateChanged(user => {
   store.dispatch("auth/fetchUser", user);
 });
 
+export const db = firebase.firestore()
 
-axios.defaults.baseURL = 'http://localhost:3000/'
+Vue.use(BootstrapVue)
+Vue.use(VueFirestore)
+
 
 new Vue({
   router,

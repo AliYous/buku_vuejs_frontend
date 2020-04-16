@@ -1,6 +1,6 @@
-import axios from 'axios'
-import bookHelper from '../helpers/BookHelper'
-import firebase from 'firebase'
+// import axios from 'axios'
+// import bookHelper from '../helpers/BookHelper'
+import { db } from '../main'
 
 const state = {
 	books: [],
@@ -18,16 +18,21 @@ const getters = {
 
 
 const actions = {
-	async fetchBooks({ commit }) {
-		const bookList = {} // Fetch book list from db
-		bookList.forEach(book => bookHelper.capitalizeBookAttributes(book)) //Capitalizing title, and author attributes of each books
-		commit("SET_BOOKS" , bookList)
+	async fetchBooks() {
+		const query = await db.collection('books').get()
+		console.log(query)
+			// bookList.forEach(book => bookHelper.capitalizeBookAttributes(book)) //Capitalizing title, and author attributes of each books
+			// console.log(bookList)
+			// commit("SET_BOOKS" , bookList)
+			
+		
 	},
 
 
 	async addBook({ dispatch }, book) {
 		const newBook = {} // New book that was created in the db 		
 		dispatch('addDispatcher', newBook)
+		console.log(book) // just to avoid the error, to remove 	
 	},
 	addDispatcher({ commit, state }, book) {
 		state.books.unshift(book) //On ajoute le nouveau livre au state puis on commit vers la mutation pour recréer les listes
