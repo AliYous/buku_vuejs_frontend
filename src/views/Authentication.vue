@@ -40,6 +40,7 @@
 						rounded
 						label="Password"
 						type="password"
+						@keypress.enter="onSignIn"
 						></v-text-field>
 
 						<v-text-field
@@ -51,6 +52,7 @@
 						rounded
 						label="Password confirmation"
 						type="password"
+						@keypress.enter="onSignUp"
 						></v-text-field>
 
 						<v-btn v-if="!userExists" color="#493E92" :loading='loading' rounded large dark @click="onSignUp">register</v-btn>
@@ -135,6 +137,7 @@ export default {
 							})
 							.then(() => {
 								this.loading = false
+								this.changeUserExistsBool()
 							});
 					})
 					.catch(err => {
