@@ -18,9 +18,21 @@ const getters = {
 
 
 const actions = {
-	async fetchBooks() {
-		const query = await db.collection('books').get()
-		console.log(query)
+	fetchBooks({ commit }) {
+		db.collection('books').get().then(querySnapshot => {
+			if (querySnapshot.empty) {
+				//this.$router.push('/HelloWorld')
+				console.log('empty booklist returned')
+			} else {
+				this.loading = false;
+				var bookList = [];
+				querySnapshot.forEach(doc => {
+					bookList.push(doc.data());
+				});
+
+				commit("SET_BOOKS", bookList);
+			}
+		});
 			// bookList.forEach(book => bookHelper.capitalizeBookAttributes(book)) //Capitalizing title, and author attributes of each books
 			// console.log(bookList)
 			// commit("SET_BOOKS" , bookList)
@@ -58,6 +70,7 @@ const actions = {
 const mutations = {
 
 	SET_BOOKS: (state, books) => {
+		console.log(books)
 		state.books = books;
 		state.booksToRead = books.filter(book => book.status === "to_read")
 		state.readBooks = books.filter(book => book.status === "read")

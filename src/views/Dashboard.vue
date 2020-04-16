@@ -4,6 +4,7 @@
 			<BookList v-bind:status="statusList.to_read" v-bind:books="booksToRead"/>
 			<BookList v-bind:status="statusList.currently_reading" v-bind:books="currentlyReadingBooks"/>
 			<BookList v-bind:status="statusList.read" v-bind:books="readBooks"/>
+			<a role="button" @click="logBooks"> console log bookList</a>
         </div>
     </div>
 </template>
@@ -11,6 +12,7 @@
 <script>
 import BookList from '../components/books/BookList'
 import { mapGetters, mapActions } from 'vuex'
+
 
 export default {
 	name: 'Dashboard',
@@ -23,7 +25,7 @@ export default {
 				currently_reading: ["In Progress", "currently_reading"], // Splitting each status in Name and actual status (db)
 				to_read: ["To Read", "to_read"],
 				read: ["Read", "read"]
-			}
+			},
 		}
 	},
 	computed: {
@@ -40,7 +42,10 @@ export default {
 	},
 
 	methods: {
-		...mapActions(['fetchBooks']),		
+		...mapActions(['fetchBooks']),	
+		logBooks() {
+			console.log(this.bookList)
+		}	
 	} 
 }
 </script>
