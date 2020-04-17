@@ -72,6 +72,8 @@
 <script>
 import { mapActions } from 'vuex'
 import firebase from 'firebase';
+import { db } from '../main'
+
 
 
 export default {
@@ -118,6 +120,7 @@ export default {
 		},
 		onSignUp() {
 			this.loading = true
+			// Checking if all form fields are valid before passing data to the db
 			if(this.form.email === '' || this.form.password === '' || this.form.password_confirmation === '') {
 				this.error = 'Please fill in all required fields'
 				this.loading = false
@@ -127,10 +130,17 @@ export default {
 				this.loading = false
 			}
 			else {
+				// Register the user
 				firebase
 					.auth()
 					.createUserWithEmailAndPassword(this.form.email, this.form.password)
 					.then(data => {
+						// Add a document to users collection with the user name and id
+						db.collection("users").doc(data.user.uid).set({
+							name: this.form.first_name,
+						}).then(function() {
+							console.log("User document created");
+						});
 						data.user
 							.updateProfile({
 								displayName: this.form.first_name

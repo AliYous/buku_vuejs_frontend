@@ -13,6 +13,9 @@
 				<div class="text-div">
 					<h1>All-in-one tool for library tracking</h1>
 					<h3 class="desc">Organize your library as you progress through your reading list</h3>
+					
+					<!-- to remove later -->
+					<a role="button" @click="testFunc">Click to create user books</a>
 				</div>
 
 				<div class="cta">
@@ -50,6 +53,8 @@
 
 <script>
 import firebase from 'firebase';
+import { db } from '../main'
+
 
 export default {
 		name: 'LandingPage',
@@ -78,6 +83,14 @@ export default {
 							this.$router.push({ name: 'Auth', params: {emailInput: this.email, userExistsProps: true}})
 						}
 					});
+			},
+
+			testFunc() {
+				db.collection("users").doc("uid_001").set({
+				name: "Ali",
+				}).then(function() {
+					console.log("User created");
+				});
 			}
 		}
 
