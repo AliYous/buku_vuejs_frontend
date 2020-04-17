@@ -19,8 +19,7 @@ const getters = {
 
 const actions = {
 	fetchBooks({ commit }) {	
-		const currentUserId = localStorage.getItem('current_uid')
-		db.collection('books').where("user_id", "==", currentUserId)
+		db.collection('books').where("user_id", "==", localStorage.getItem('current_uid'))
 			.get().then(querySnapshot => {
 				if (querySnapshot.empty) {
 					//this.$router.push('/HelloWorld')
@@ -28,7 +27,9 @@ const actions = {
 				} else {
 					var bookList = [];
 					querySnapshot.forEach(doc => {
-						bookList.push(doc.data());
+						const book = doc.data()
+						book.id = doc.id // We add the document id as an attribute here so we can delete or update a specific document later
+						bookList.push(book);
 					});
 
 					bookList.forEach(book => bookHelper.capitalizeBookAttributes(book)) //Capitalizing title, and author attributes of each books
@@ -49,6 +50,7 @@ const actions = {
 
 	// We delete the book from the database first, then we dispatch to filter the main bookList, then we commit to reset all the lists - the removed item
 	deleteBook({ dispatch }, book) {
+		db.collection('books').doc(book.id).delete()
 		dispatch("deleteDispatcher", book.id)
 	},
 	deleteDispatcher({ commit, state },  id) {
