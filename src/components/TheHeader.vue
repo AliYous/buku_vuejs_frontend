@@ -1,8 +1,10 @@
 <template>
   <nav class="header">
     <v-toolbar app flat>
-      <img class="mr-3 logo" :src="require('@/assets/buku-logo.png')" height="500"/>
-      <a v-if="userLoggedIn" role="button" @click.prevent="signOut">Sign out</a>
+      <div class="logo">
+        <img class="mr-3" :src="require('@/assets/buku-logo.png')" max-height="500"/>
+      </div>
+      <a v-if="userLoggedIn" role="button" class="signOut-btn" @click.prevent="signOut">Sign out</a>
     </v-toolbar>
   </nav>
 </template>
@@ -47,14 +49,19 @@ export default {
 </script>
 
 <style>
-  /* .header {
-    margin-bottom: 3rem;
+  .header {
+    margin-bottom: 3em;
   }
   .avatar {
     padding-right: 15px;
-  } */
+  } 
   .logo {
-    margin-top: 6em;
-    margin-left: -3em;
+    position: absolute;
+    left: -5em;
+  }
+  .signOut-btn {
+    position: absolute;
+    left: 90%;
+    margin-top: 0.6em;
   }
 </style>

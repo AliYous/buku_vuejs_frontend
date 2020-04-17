@@ -50,7 +50,7 @@ export default {
       display: flex;
       justify-content: space-around;
       width: 21%;
-      height: 52em;
+      height: 50em;
       background: #F4F0FA;
       border-radius: 3%;
   }
