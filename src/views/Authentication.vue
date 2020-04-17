@@ -136,12 +136,12 @@ export default {
 					.auth()
 					.createUserWithEmailAndPassword(this.form.email, this.form.password)
 					.then(data => {
-						// Add a document to users collection with the user name and id
+						// Add a document to users collection with the user name and email
 						db.collection("users").doc(data.user.uid).set({
 							name: this.form.first_name,
-						}).then(function() {
-							console.log("User document created");
-						});
+							email: data.user.email
+						})
+						
 						data.user
 							.updateProfile({
 								displayName: this.form.first_name
@@ -150,6 +150,10 @@ export default {
 								this.loading = false
 								this.changeUserExistsBool() // after user is registered, render only the signIn fields (pre-filled) so he can sign in
 							});
+						
+						// populate books collection associated to the user
+						this.populateUserBooks(data.user.uid)
+						console.log("User registered and initial books added to his collection")
 					})
 					.catch(err => {
 						this.error = err.message;
@@ -159,6 +163,33 @@ export default {
 		},
 		changeUserExistsBool() {
 			this.userExists = !this.userExists
+		},
+
+		populateUserBooks(userId) {
+			db.collection("books").add({
+				user_id: userId,
+				title: "rich dad poor dad",
+				author: "robert kyosaki",
+				comment: "Basics of financial education : Change your mindset about money",
+				purchased: false,
+				status: "to_read"
+			})
+			db.collection("books").add({
+				user_id: userId,
+				title: "the magic of thinking big",
+				author: "david schwartz",
+				comment: "Think outside the box and thing big to change your life and impact the world",
+				purchased: true,
+				status: "read"
+			})
+			db.collection("books").add({
+				user_id: userId,
+				title: "The war of art",
+				author: "robert kyosaki",
+				comment: "Recommended by Harry Jmg : All you need to know about resistance and how to beat it. Beat the little voice to finally reach your full potential.",
+				purchased: true,
+				status: "currently_reading"
+			})
 		}
 	}
 
