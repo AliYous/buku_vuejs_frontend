@@ -12,6 +12,7 @@
 				<h1 v-if="userExists">Sign in</h1>
 				
 				<div v-if="error" class="alert alert-danger error">{{error}}</div>
+				
 					<form class="form container">
 						<v-text-field class="text-field"
 						v-if="!userExists"
@@ -186,6 +187,7 @@ export default {
 	}
 	.card {
 		padding: 1em;
+		width: 40em;
 	}
 
 	h1 {
@@ -194,12 +196,12 @@ export default {
 	}
 	.form {
 		position: relative;
-		width: 90%;
+		width: 80%;
 		margin-bottom: 1em;
 
 	}
 	.text-field {
-		margin-bottom: 2em;
+		margin-bottom: -0.6em;
 	}
 
 	.already-member-text:hover {
