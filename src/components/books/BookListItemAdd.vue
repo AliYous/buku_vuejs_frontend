@@ -76,7 +76,8 @@ export default {
 				author: '',
         comment: '',
 				status: this.bookListStatus[1], // index 1 to actually get the db attr name of the status, not the display name
-				purchased: false,
+        purchased: false,
+        user_id: localStorage.getItem('current_uid')
       },
 			dialog: false,
 		}

@@ -16,7 +16,7 @@ export default {
     fetchUser({ commit }, user) {
       commit("SET_LOGGED_IN", user !== null);
       if (user) {
-		localStorage.setItem('current_uid', user.uid)
+		localStorage.setItem('current_uid', user.uid) // Setting the uid in localStorage so i can access from anywhere
         commit("SET_USER", {
 			displayName: user.displayName,
 			email: user.email,
