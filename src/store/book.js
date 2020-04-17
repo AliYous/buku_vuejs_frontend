@@ -18,22 +18,24 @@ const getters = {
 
 
 const actions = {
-	fetchBooks({ commit }) {
-		db.collection('books').get().then(querySnapshot => {
-			if (querySnapshot.empty) {
-				//this.$router.push('/HelloWorld')
-				console.log('empty booklist returned')
-			} else {
-				var bookList = [];
-				querySnapshot.forEach(doc => {
-					bookList.push(doc.data());
-				});
+	fetchBooks({ commit }) {	
+		const currentUserId = localStorage.getItem('current_uid')
+		db.collection('books').where("user_id", "==", currentUserId)
+			.get().then(querySnapshot => {
+				if (querySnapshot.empty) {
+					//this.$router.push('/HelloWorld')
+					console.log('empty booklist returned')
+				} else {
+					var bookList = [];
+					querySnapshot.forEach(doc => {
+						bookList.push(doc.data());
+					});
 
-				bookList.forEach(book => bookHelper.capitalizeBookAttributes(book)) //Capitalizing title, and author attributes of each books
+					bookList.forEach(book => bookHelper.capitalizeBookAttributes(book)) //Capitalizing title, and author attributes of each books
 
-				commit("SET_BOOKS", bookList);
-			}
-		});		
+					commit("SET_BOOKS", bookList);
+				}
+			});		
 	},
 	addBook({ dispatch }, book) {
 		db.collection('books').add(book).then( () => {
