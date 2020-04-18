@@ -1,0 +1,139 @@
+[debug] [2020-04-17T11:03:58.061Z] ----------------------------------------------------------------------
+[debug] [2020-04-17T11:03:58.063Z] Command:       /home/aliyous/.nvm/versions/node/v13.8.0/bin/node /home/aliyous/.nvm/versions/node/v13.8.0/bin/firebase deploy --only functions
+[debug] [2020-04-17T11:03:58.063Z] CLI Version:   8.1.0
+[debug] [2020-04-17T11:03:58.063Z] Platform:      linux
+[debug] [2020-04-17T11:03:58.063Z] Node Version:  v13.8.0
+[debug] [2020-04-17T11:03:58.064Z] Time:          Fri Apr 17 2020 13:03:58 GMT+0200 (Central European Summer Time)
+[debug] [2020-04-17T11:03:58.064Z] ----------------------------------------------------------------------
+[debug] [2020-04-17T11:03:58.064Z] 
+[debug] [2020-04-17T11:03:58.070Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-17T11:03:58.070Z] > authorizing via signed-in user
+[debug] [2020-04-17T11:03:58.070Z] [iam] checking project buku-bfbf9 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2020-04-17T11:03:58.073Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/buku-bfbf9:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2020-04-17T11:03:58.937Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 17 Apr 2020 11:03:58 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=658","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-17T11:03:58.945Z] >>> HTTP REQUEST POST https://iam.googleapis.com/v1/projects/buku-bfbf9/serviceAccounts/buku-bfbf9@appspot.gserviceaccount.com:testIamPermissions  
+ {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2020-04-17T11:03:59.846Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 17 Apr 2020 11:03:59 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-17T11:03:59.909Z] TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received undefined
+    at validateString (internal/validators.js:118:11)
+    at Object.join (path.js:1039:7)
+    at Object.checkFunctionsSDKVersion [as fn] (/home/aliyous/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/checkFirebaseSDKVersion.js:33:28)
+    at Command.<anonymous> (/home/aliyous/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/command.js:159:30)
+    at Generator.next (<anonymous>)
+    at fulfilled (/home/aliyous/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/command.js:5:58)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2020-04-17T11:04:12.126Z] ----------------------------------------------------------------------
+[debug] [2020-04-17T11:04:12.127Z] Command:       /home/aliyous/.nvm/versions/node/v13.8.0/bin/node /home/aliyous/.nvm/versions/node/v13.8.0/bin/firebase deploy --only functions
+[debug] [2020-04-17T11:04:12.128Z] CLI Version:   8.1.0
+[debug] [2020-04-17T11:04:12.128Z] Platform:      linux
+[debug] [2020-04-17T11:04:12.128Z] Node Version:  v13.8.0
+[debug] [2020-04-17T11:04:12.128Z] Time:          Fri Apr 17 2020 13:04:12 GMT+0200 (Central European Summer Time)
+[debug] [2020-04-17T11:04:12.128Z] ----------------------------------------------------------------------
+[debug] [2020-04-17T11:04:12.129Z] 
+[debug] [2020-04-17T11:04:12.134Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-17T11:04:12.135Z] > authorizing via signed-in user
+[debug] [2020-04-17T11:04:12.135Z] [iam] checking project buku-bfbf9 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2020-04-17T11:04:12.137Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/buku-bfbf9:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2020-04-17T11:04:12.974Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 17 Apr 2020 11:04:12 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=664","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-17T11:04:12.976Z] >>> HTTP REQUEST POST https://iam.googleapis.com/v1/projects/buku-bfbf9/serviceAccounts/buku-bfbf9@appspot.gserviceaccount.com:testIamPermissions  
+ {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2020-04-17T11:04:13.365Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 17 Apr 2020 11:04:13 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-17T11:04:13.445Z] TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received undefined
+    at validateString (internal/validators.js:118:11)
+    at Object.join (path.js:1039:7)
+    at Object.checkFunctionsSDKVersion [as fn] (/home/aliyous/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/checkFirebaseSDKVersion.js:33:28)
+    at Command.<anonymous> (/home/aliyous/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/command.js:159:30)
+    at Generator.next (<anonymous>)
+    at fulfilled (/home/aliyous/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/command.js:5:58)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2020-04-17T11:07:46.194Z] ----------------------------------------------------------------------
+[debug] [2020-04-17T11:07:46.197Z] Command:       /home/aliyous/.nvm/versions/node/v13.8.0/bin/node /home/aliyous/.nvm/versions/node/v13.8.0/bin/firebase deploy --only functions
+[debug] [2020-04-17T11:07:46.197Z] CLI Version:   8.1.0
+[debug] [2020-04-17T11:07:46.197Z] Platform:      linux
+[debug] [2020-04-17T11:07:46.197Z] Node Version:  v13.8.0
+[debug] [2020-04-17T11:07:46.197Z] Time:          Fri Apr 17 2020 13:07:46 GMT+0200 (Central European Summer Time)
+[debug] [2020-04-17T11:07:46.198Z] ----------------------------------------------------------------------
+[debug] [2020-04-17T11:07:46.198Z] 
+[debug] [2020-04-17T11:07:46.204Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-17T11:07:46.204Z] > authorizing via signed-in user
+[debug] [2020-04-17T11:07:46.204Z] [iam] checking project buku-bfbf9 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2020-04-17T11:07:46.206Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/buku-bfbf9:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2020-04-17T11:07:47.077Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 17 Apr 2020 11:07:46 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=658","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-17T11:07:47.079Z] >>> HTTP REQUEST POST https://iam.googleapis.com/v1/projects/buku-bfbf9/serviceAccounts/buku-bfbf9@appspot.gserviceaccount.com:testIamPermissions  
+ {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2020-04-17T11:07:48.098Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 17 Apr 2020 11:07:47 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-17T11:07:48.182Z] TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received undefined
+    at validateString (internal/validators.js:118:11)
+    at Object.join (path.js:1039:7)
+    at Object.checkFunctionsSDKVersion [as fn] (/home/aliyous/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/checkFirebaseSDKVersion.js:33:28)
+    at Command.<anonymous> (/home/aliyous/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/command.js:159:30)
+    at Generator.next (<anonymous>)
+    at fulfilled (/home/aliyous/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/command.js:5:58)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2020-04-17T11:09:36.040Z] ----------------------------------------------------------------------
+[debug] [2020-04-17T11:09:36.042Z] Command:       /home/aliyous/.nvm/versions/node/v13.8.0/bin/node /home/aliyous/.nvm/versions/node/v13.8.0/bin/firebase deploy --only functions
+[debug] [2020-04-17T11:09:36.042Z] CLI Version:   8.1.0
+[debug] [2020-04-17T11:09:36.042Z] Platform:      linux
+[debug] [2020-04-17T11:09:36.042Z] Node Version:  v13.8.0
+[debug] [2020-04-17T11:09:36.043Z] Time:          Fri Apr 17 2020 13:09:36 GMT+0200 (Central European Summer Time)
+[debug] [2020-04-17T11:09:36.043Z] ----------------------------------------------------------------------
+[debug] [2020-04-17T11:09:36.043Z] 
+[debug] [2020-04-17T11:09:36.049Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-17T11:09:36.049Z] > authorizing via signed-in user
+[debug] [2020-04-17T11:09:36.049Z] [iam] checking project buku-bfbf9 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2020-04-17T11:09:36.052Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/buku-bfbf9:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2020-04-17T11:09:36.850Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 17 Apr 2020 11:09:36 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=661","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-17T11:09:36.852Z] >>> HTTP REQUEST POST https://iam.googleapis.com/v1/projects/buku-bfbf9/serviceAccounts/buku-bfbf9@appspot.gserviceaccount.com:testIamPermissions  
+ {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2020-04-17T11:09:37.768Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 17 Apr 2020 11:09:37 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"quic=\":443\"; ma=2592000; v=\"46,43\",h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'buku-bfbf9'...
+[info] 
+[info] i  deploying functions
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script.
+[debug] [2020-04-17T11:09:46.718Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "dependencies": {
+    "firebase-admin": "^8.10.0",
+    "firebase-functions": "^3.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2020-04-17T11:09:46.794Z] Error: ENOENT: no such file or directory, stat 'functions/package.json'
+    at Object.statSync (fs.js:948:3)
+    at Object.load (/home/aliyous/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/node_modules/cjson/index.js:200:12)
+    at getRuntimeChoice (/home/aliyous/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/parseRuntimeAndValidateSDK.js:55:26)
+    at module.exports (/home/aliyous/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/deploy/functions/prepare.js:26:29)
+    at _chain (/home/aliyous/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/deploy/index.js:22:40)
+    at /home/aliyous/.nvm/versions/node/v13.8.0/lib/node_modules/firebase-tools/lib/deploy/index.js:63:16
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+[error] 
+[error] Error: An unexpected error has occurred.

@@ -4,7 +4,7 @@
 				<!-- image -->
 			</div>
 
-			<div class="bottom-right-image">
+			<div class="top-right-image">
 				<!-- image -->
 			</div>
 
@@ -29,6 +29,7 @@
 										rounded 
 										dark
 										x-large
+										:loading="loading"
 										color="#493E92"
 										class="ma-0"
 										style="margin-right:-1.5em;"
@@ -48,16 +49,35 @@
 </template>
 
 <script>
+import firebase from 'firebase';
+
 export default {
 		name: 'LandingPage',
 		data() {
 			return {
-				email: ''
+				email: '',
+				loading: false
 			}
 		},
 		methods: {
 			onSubmit() {
-				this.$router.push({ name: 'SignIn', params: {emailInput: this.email }})
+				this.loading = true
+			//We send a request just to see if user exists in the db, no user will ever have this pwd so it shall always return err, then we act according to the type of err
+				firebase
+					.auth()
+					.signInWithEmailAndPassword(this.email, 'pwdinvalidforsure1267$$3impossiblepasswdpassworduser')
+					.catch(err => {
+						// If the email does not exist, we show the signUp fields
+						if (err.code === "auth/user-not-found") {
+							console.log("redirect to signup")
+							this.$router.push({ name: 'Auth', params: {emailInput: this.email, userExistsProps: false}})
+						}
+						// If it does exist, we show the signIn fields
+						else {
+							console.log('redirect to signin')
+							this.$router.push({ name: 'Auth', params: {emailInput: this.email, userExistsProps: true}})
+						}
+					});
 			}
 		}
 
@@ -67,6 +87,11 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 
+	@media (max-width:1288px) {
+		div.top-right-image {
+			display: none;
+		}
+	}
     .container-fluid {
         display: flex;
         flex-direction: column;
@@ -92,16 +117,16 @@ export default {
 			position: relative;
 			height: 35.89em;
 			width: 39em;
-			top: 18.8em;
+			top: 17em;
 			left: -10em;
 			background-image: url('../assets/reading_light_orange.png');
 		}
-		.bottom-right-image {
+		.top-right-image {
 			position: absolute;
 			height: 40em;
 			width: 43em;
-			top: -5em;
-			right: -5em;
+			top: 3em;
+			right: -10em;
 			background-image: url('../assets/reading.png');
 		} 
    

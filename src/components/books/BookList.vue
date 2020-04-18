@@ -1,6 +1,6 @@
 <template>
       <div class="flex-rectangle">
-        <!-- <BookListItemAdd v-bind:bookListStatus="status" /> -->
+        <BookListItemAdd v-bind:bookListStatus="status" />
         <div class="book-status">
           <h1 class="book-status-text" >{{ status[0] }}</h1>
         </div>
@@ -21,7 +21,7 @@
 
 <script>
 import BookListItem from './BookListItem';
-// import BookListItemAdd from './BookListItemAdd'
+import BookListItemAdd from './BookListItemAdd'
 import vuescroll from 'vuescroll';
 import { Container, Draggable } from "vue-smooth-dnd";
 
@@ -30,7 +30,7 @@ export default {
   name: 'BookList',
   components: {
     BookListItem,
-    // BookListItemAdd
+    BookListItemAdd,
     vuescroll,
     Container,
     Draggable
@@ -50,7 +50,7 @@ export default {
       display: flex;
       justify-content: space-around;
       width: 21%;
-      height: 52em;
+      height: 50em;
       background: #F4F0FA;
       border-radius: 3%;
   }

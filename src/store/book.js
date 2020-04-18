@@ -1,5 +1,6 @@
-import axios from 'axios'
+// import axios from 'axios'
 import bookHelper from '../helpers/BookHelper'
+import { db } from '../main'
 
 const state = {
 	books: [],
@@ -17,17 +18,30 @@ const getters = {
 
 
 const actions = {
-	async fetchBooks({ commit }) {
-		const response = await axios.get('api/v1/books');
-		const bookList = response.data
-		bookList.forEach(book => bookHelper.capitalizeBookAttributes(book)) //Capitalizing title, and author attributes of each books
-		commit("SET_BOOKS" , bookList) 
+	fetchBooks({ commit }) {	
+		db.collection('books').where("user_id", "==", localStorage.getItem('current_uid'))
+			.get().then(querySnapshot => {
+				if (querySnapshot.empty) {
+					//this.$router.push('/HelloWorld')
+					console.log('empty booklist returned')
+				} else {
+					var bookList = [];
+					querySnapshot.forEach(doc => {
+						const book = doc.data()
+						book.id = doc.id // We add the document id as an attribute here so we can delete or update a specific document later
+						bookList.push(book);
+					});
+
+					bookList.forEach(book => bookHelper.capitalizeBookAttributes(book)) //Capitalizing title, and author attributes of each books
+
+					commit("SET_BOOKS", bookList);
+				}
+			});		
 	},
-
-
-	async addBook({ dispatch }, book) {
-		const response = await axios.post('api/v1/books', book);
-		dispatch('addDispatcher', response.data)
+	addBook({ dispatch }, book) {
+		db.collection('books').add(book).then( () => {
+			dispatch('addDispatcher', book)
+		})	
 	},
 	addDispatcher({ commit, state }, book) {
 		state.books.unshift(book) //On ajoute le nouveau livre au state puis on commit vers la mutation pour recréer les listes
@@ -35,19 +49,26 @@ const actions = {
 	},
 
 	// We delete the book from the database first, then we dispatch to filter the main bookList, then we commit to reset all the lists - the removed item
-	async deleteBook({ dispatch }, book) {
-		await axios.delete(`api/v1/books/${book.id}`)
+	deleteBook({ dispatch }, book) {
+		db.collection('books').doc(book.id).delete()
 		dispatch("deleteDispatcher", book.id)
 	},
 	deleteDispatcher({ commit, state },  id) {
 		const books = state.books.filter(book => book.id !== id)
 		commit("SET_BOOKS", books )
-	}
+	},
 
-// 	async updateBook({ commit }, updatedBook) {
-// 		// const response = await axios.put(`https://jsonplaceholder.typicode.com/books/${updatedBook.id}`, updatedBook);
-// 		// commit('updateBook', response.data)
-// 	}
+	updateBook({ dispatch }, updatedBook) {
+		db.collection('books').doc(updatedBook.id).update(updatedBook)
+		dispatch("updateDispatcher", updatedBook)
+	},
+	updateDispatcher({ commit, state}, updatedBook) {
+		const index = state.books.findIndex(book => book.id === updatedBook.id)
+		if(index !== -1) {
+			state.books.splice(index, 1, updatedBook);
+		}
+		commit('SET_BOOKS', state.books)
+	}
 }
 
 const mutations = {
@@ -59,14 +80,7 @@ const mutations = {
 		state.currentlyReadingBooks = books.filter(book => book.status === "currently_reading")
 	},
 
-    NEW_BOOK: (state, book) => state.books.unshift(book),
-
-	// updateBook: (state, updatedBook) => {
-		// const index = state.books.findIndex(book => book.id === updatedBook.id)
-		// if(index !== -1) {
-		// 	state.books.splice(index, 1, updatedBook);
-		// }
-	// }
+    NEW_BOOK: (state, book) => state.books.unshift(book)
 } 
 
 export default {

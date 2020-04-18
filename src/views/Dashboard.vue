@@ -12,6 +12,7 @@
 import BookList from '../components/books/BookList'
 import { mapGetters, mapActions } from 'vuex'
 
+
 export default {
 	name: 'Dashboard',
 	components: {
@@ -23,16 +24,24 @@ export default {
 				currently_reading: ["In Progress", "currently_reading"], // Splitting each status in Name and actual status (db)
 				to_read: ["To Read", "to_read"],
 				read: ["Read", "read"]
-			}
+			},
 		}
 	},
+	computed: {
+		...mapGetters([
+			'allBooks',
+			'booksToRead',
+			'readBooks',
+			'currentlyReadingBooks',
+			]), //Returns the books from the state (stateGetter)
+	},
+
 	created() {
 		this.fetchBooks()
 	},
-  computed: mapGetters(['allBooks', 'booksToRead', 'readBooks', 'currentlyReadingBooks']), //Returns the books from the state (stateGetter)
 
 	methods: {
-		...mapActions(['fetchBooks']),		
+		...mapActions(['fetchBooks'])
 	} 
 }
 </script>

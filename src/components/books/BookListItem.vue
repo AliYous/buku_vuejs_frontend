@@ -19,41 +19,52 @@
         {{ book.comment }}
       </v-card-text>
 
-      <v-card-actions>
-        <v-btn
-          text
-          color="deep-purple accent-4"
-        >
-          Read
-        </v-btn>
-        <v-btn
-          text
-          color="deep-purple accent-4"
-        >
-          Bookmark
-        </v-btn>
-        <v-spacer></v-spacer>
-        <v-btn icon>
-          <v-icon>mdi-heart</v-icon>
-        </v-btn>
-      </v-card-actions>
+      <div class="container upd-status-container">
+        <h5>Upd. Status :</h5> 
+        <v-card-actions v-for="(status, i) in statusList" :key="i">
+          <v-btn
+            text
+            color="deep-purple accent-4"
+            @click="updateBookStatus(book, status.status)"
+          >
+            {{ status.displayName }}
+          </v-btn>
+        </v-card-actions>
+
+      </div>
     </v-card>
 </template>
 
 <script>
 import BookListItemDelete from './BookListItemDelete'
+import { mapActions } from 'vuex'
 
 
 export default {
     name: 'BookListItem',
     props: ['book'],
+
+    data: () => ({
+        statusList: [
+          {displayName: "Read", status: "read"},
+          {displayName: "To read", status: "to_read"},
+          {displayName: "In progress", status: "currently_reading"}          
+        ]
+    }),
+
     components: {
       BookListItemDelete
-   },
+    },
 
     methods: {
+      ...mapActions(['updateBook']),
+
       deleteBook(id) {
         console.log("delete" + id)
+      },
+      updateBookStatus(book, status) {
+        book.status = status
+        this.updateBook(book)
       }
     }
 
@@ -62,11 +73,15 @@ export default {
 
 <style scoped>
     .book-card {
-      color: red;
       margin-bottom: 1.2em;
     }
 
     hr .split {
         border: 3px solid #EFEEF1;
+    }
+
+    .upd-status-container {
+      display: flex;
+      flex-direction: row;
     }
 </style>
