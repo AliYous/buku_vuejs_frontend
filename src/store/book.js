@@ -39,7 +39,8 @@ const actions = {
 			});		
 	},
 	addBook({ dispatch }, book) {
-		db.collection('books').add(book).then( () => {
+		db.collection('books').add(book).then( data => {
+			book.id = data.id
 			dispatch('addDispatcher', book)
 		})	
 	},
