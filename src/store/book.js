@@ -58,9 +58,16 @@ const actions = {
 		commit("SET_BOOKS", books )
 	},
 
-	async updateBook({ commit }, updatedBook) {
+	updateBook({ dispatch }, updatedBook) {
 		db.collection('books').doc(updatedBook.id).update(updatedBook)
-		commit('UPDATE_BOOK', updatedBook)
+		dispatch("updateDispatcher", updatedBook)
+	},
+	updateDispatcher({ commit, state}, updatedBook) {
+		const index = state.books.findIndex(book => book.id === updatedBook.id)
+		if(index !== -1) {
+			state.books.splice(index, 1, updatedBook);
+		}
+		commit('SET_BOOKS', state.books)
 	}
 }
 
@@ -73,14 +80,7 @@ const mutations = {
 		state.currentlyReadingBooks = books.filter(book => book.status === "currently_reading")
 	},
 
-    NEW_BOOK: (state, book) => state.books.unshift(book),
-
-	UPDATE_BOOK: (state, updatedBook) => {
-		const index = state.books.findIndex(book => book.id === updatedBook.id)
-		if(index !== -1) {
-			state.books.splice(index, 1, updatedBook);
-		}
-	}
+    NEW_BOOK: (state, book) => state.books.unshift(book)
 } 
 
 export default {

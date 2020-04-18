@@ -24,7 +24,6 @@
         <v-card-actions v-for="(status, i) in statusList" :key="i">
           <v-btn
             text
-            small
             color="deep-purple accent-4"
             @click="updateBookStatus(book, status.status)"
           >
@@ -49,7 +48,7 @@ export default {
         statusList: [
           {displayName: "Read", status: "read"},
           {displayName: "To read", status: "to_read"},
-          {displayName: "Current. reading", status: "currently_reading"}          
+          {displayName: "In progress", status: "currently_reading"}          
         ]
     }),
 

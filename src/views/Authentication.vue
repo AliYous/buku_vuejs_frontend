@@ -180,7 +180,7 @@ export default {
 				author: "david schwartz",
 				comment: "Think outside the box and thing big to change your life and impact the world",
 				purchased: true,
-				status: "read"
+				status: "to_read"
 			})
 			db.collection("books").add({
 				user_id: userId,
