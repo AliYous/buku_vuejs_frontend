@@ -1,8 +1,8 @@
 <template>
 
 	<div class="main">
-		<div class="top-right-image">
-			<!-- image css -->
+		<div class="image-container">
+			<img src="../assets/reading.png" class="top-right-image">
 		</div>
 
 		<div class="container-fluid">
@@ -198,14 +198,17 @@ export default {
 
 <style scoped>
 
-.top-right-image {
+	.image-container {
 		position: absolute;
-		height: 40em;
-		width: 43em;
-		top: -5em;
-		right: -5em;
-		background-image: url('../assets/reading.png');
+		min-width: 20%;
+		top: 3.9em;
+		right: -2em;
 	} 
+	img {
+		height: auto;
+		width: 100%;
+	}
+
 	.container-fluid {
 		display: flex;
 		position: absolute;
@@ -215,10 +218,11 @@ export default {
 		left: 50%;
 		transform: translate(-50%, -50%);
 		text-align: center;
+		width: 90%;
 	}
 	.card {
 		padding: 1em;
-		width: 40em;
+		width: 100%;
 	}
 
 	h1 {

@@ -4,7 +4,7 @@
 				<!-- image -->
 			</div>
 
-			<div class="bottom-right-image">
+			<div class="top-right-image">
 				<!-- image -->
 			</div>
 
@@ -87,6 +87,11 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 
+	@media (max-width:1288px) {
+		div.top-right-image {
+			display: none;
+		}
+	}
     .container-fluid {
         display: flex;
         flex-direction: column;
@@ -112,16 +117,16 @@ export default {
 			position: relative;
 			height: 35.89em;
 			width: 39em;
-			top: 18.8em;
+			top: 17em;
 			left: -10em;
 			background-image: url('../assets/reading_light_orange.png');
 		}
-		.bottom-right-image {
+		.top-right-image {
 			position: absolute;
 			height: 40em;
 			width: 43em;
-			top: -5em;
-			right: -5em;
+			top: 3em;
+			right: -10em;
 			background-image: url('../assets/reading.png');
 		} 
    

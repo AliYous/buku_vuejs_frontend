@@ -56,12 +56,12 @@ const actions = {
 	deleteDispatcher({ commit, state },  id) {
 		const books = state.books.filter(book => book.id !== id)
 		commit("SET_BOOKS", books )
-	}
+	},
 
-// 	async updateBook({ commit }, updatedBook) {
-// 		// const response = await axios.put(`https://jsonplaceholder.typicode.com/books/${updatedBook.id}`, updatedBook);
-// 		// commit('updateBook', response.data)
-// 	}
+	async updateBook({ commit }, updatedBook) {
+		db.collection('books').doc(updatedBook.id).update(updatedBook)
+		commit('UPDATE_BOOK', updatedBook)
+	}
 }
 
 const mutations = {
@@ -75,12 +75,12 @@ const mutations = {
 
     NEW_BOOK: (state, book) => state.books.unshift(book),
 
-	// updateBook: (state, updatedBook) => {
-		// const index = state.books.findIndex(book => book.id === updatedBook.id)
-		// if(index !== -1) {
-		// 	state.books.splice(index, 1, updatedBook);
-		// }
-	// }
+	UPDATE_BOOK: (state, updatedBook) => {
+		const index = state.books.findIndex(book => book.id === updatedBook.id)
+		if(index !== -1) {
+			state.books.splice(index, 1, updatedBook);
+		}
+	}
 } 
 
 export default {
