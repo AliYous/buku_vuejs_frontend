@@ -23,6 +23,7 @@
         <h5>Upd. Status :</h5> 
         <v-card-actions v-for="(status, i) in statusList" :key="i">
           <v-btn
+            v-if="status.status !== book.status"
             text
             color="deep-purple accent-4"
             @click="updateBookStatus(book, status.status)"

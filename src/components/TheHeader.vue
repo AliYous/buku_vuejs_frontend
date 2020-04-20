@@ -1,9 +1,13 @@
 <template>
   <nav class="header">
     <v-toolbar app flat>
-      <div class="logo">
-        <img class="mr-3" :src="require('@/assets/buku-logo.png')" max-height="500"/>
-      </div>
+         <div class="logo">
+            <router-link :to="{ name: 'LandingPage'}">
+              <img class="mr-3" :src="require('@/assets/buku-logo.png')" max-height="500"/>
+            </router-link>
+          </div>
+      
+      
       <a v-if="userLoggedIn" role="button" class="signOut-btn" @click.prevent="signOut">Sign out</a>
     </v-toolbar>
   </nav>

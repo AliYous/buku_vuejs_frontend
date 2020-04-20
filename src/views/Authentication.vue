@@ -188,7 +188,7 @@ export default {
 				author: "robert kyosaki",
 				comment: "Recommended by Harry Jmg : All you need to know about resistance and how to beat it. Beat the little voice to finally reach your full potential.",
 				purchased: true,
-				status: "currently_reading"
+				status: "to_read"
 			})
 		}
 	}
